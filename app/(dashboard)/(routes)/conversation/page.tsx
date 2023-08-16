@@ -1,7 +1,9 @@
 import Heading from "@/components/heading";
 import { MessageSquare } from "../../../../node_modules/lucide-react";
+import { useForm } from "react-hook-form";
 
 const ConversationPage = () => {
+  const form = useForm();
   return (
     <div>
       <Heading
