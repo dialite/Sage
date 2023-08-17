@@ -50,7 +50,7 @@ const ConversationPage = () => {
                       <Input
                         className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                         disabled={isLoading}
-                        placeholder="You can freely ask any question"
+                        placeholder="Ask your question here"
                         {...field}
                       />
                     </FormControl>
