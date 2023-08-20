@@ -50,7 +50,7 @@ const ConversationPage = () => {
                       <Input
                         className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                         disabled={isLoading}
-                        placeholder="Ask your question here"
+                        placeholder="You can freely ask any question"
                         {...field}
                       />
                     </FormControl>
@@ -66,7 +66,7 @@ const ConversationPage = () => {
             </form>
           </Form>
         </div>
-        <div className="space-y-4 mt-4">Message Content</div>
+        <div className="space-y-4 mt-4">Messages Content</div>
       </div>
     </div>
   );
