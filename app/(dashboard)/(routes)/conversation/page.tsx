@@ -6,6 +6,7 @@ import { MessageSquare } from "../../../../node_modules/lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { Empty } from "@/components/empty";
 
 // Define the type for chat messages
 interface ChatCompletionRequestMessage {
@@ -100,6 +101,11 @@ const ConversationPage = () => {
           </Form>
         </div>
         <div className="space-y-4 mt-4">
+          {messages.length === 0 && !isLoading && (
+            <div>
+              <Empty label="Empty conversation" />
+            </div>
+          )}
           <div className="flex flex-col-reverse gap-y-4">
             {messages.map((message) => (
               <div key={message.content}>{message.content}</div>
