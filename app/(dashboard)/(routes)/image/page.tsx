@@ -28,6 +28,8 @@ const ImagePage = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       prompt: "",
+      amount: "1",
+      resolution: "512x512",
     },
   });
 
@@ -35,7 +37,12 @@ const ImagePage = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      const response = await axios.post("/api/conversation");
+      setImages([]);
+      const response = await axios.post("/api/image", values);
+
+      const urls = response.data.map((image: { url: string }) => image.url);
+
+      setImages(urls);
 
       // clear input
       form.reset();
@@ -89,7 +96,7 @@ const ImagePage = () => {
         </div>
         <div className="space-y-4 mt-4">
           {isLoading && (
-            <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted">
+            <div className="p-20">
               <Loader />
             </div>
           )}
