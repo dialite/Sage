@@ -48,7 +48,7 @@ const ConversationPage = () => {
 
       const newMessages = [...messages, userMessage];
 
-      const response = await axios.post("/api/conversation", {
+      const response = await axios.post("/api/code", {
         messages: newMessages,
       });
 
@@ -68,7 +68,7 @@ const ConversationPage = () => {
     <div>
       <Heading
         title="Code Generation"
-        description="Generate code base using descriptive text"
+        description="Generate code-base using descriptive text"
         icon={Code}
         iconColor="text-green-700"
         bgColor="bg-green-700/10"
@@ -88,7 +88,7 @@ const ConversationPage = () => {
                       <Input
                         className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                         disabled={isLoading}
-                        placeholder="You can freely ask any question"
+                        placeholder="e.g Simple toggle button using react hooks."
                         {...field}
                       />
                     </FormControl>
