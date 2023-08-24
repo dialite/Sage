@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import * as z from "zod";
-import { MessageSquare } from "../../../../node_modules/lucide-react";
+import { ImageIcon } from "../../../../node_modules/lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
@@ -26,7 +26,7 @@ import { BotAvatar } from "@/components/bot-avater";
 import { formSchema } from "./constants";
 import { useState } from "react";
 
-const ConversationPage = () => {
+const ImagePage = () => {
   const router = useRouter();
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
 
@@ -67,11 +67,11 @@ const ConversationPage = () => {
   return (
     <div>
       <Heading
-        title="Conversation"
-        description="The best conversation platform with AI"
-        icon={MessageSquare}
-        iconColor="text-violet-500"
-        bgColor="bg-violet-500/10"
+        title="Image Generation"
+        description="Turn your prompt into an image"
+        icon={ImageIcon}
+        iconColor="text-pink-700"
+        bgColor="bg-pink-700/10"
       />
       <div className="px-4 lg:px-8">
         <div>
@@ -137,4 +137,4 @@ const ConversationPage = () => {
   );
 };
 
-export default ConversationPage;
+export default ImagePage;
