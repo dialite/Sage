@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import * as z from "zod";
-import { MessageSquare } from "../../../../node_modules/lucide-react";
+import { Code } from "../../../../node_modules/lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
@@ -26,7 +26,7 @@ import { BotAvatar } from "@/components/bot-avater";
 import { formSchema } from "./constants";
 import { useState } from "react";
 
-const CodePage = () => {
+const ConversationPage = () => {
   const router = useRouter();
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
 
@@ -67,11 +67,11 @@ const CodePage = () => {
   return (
     <div>
       <Heading
-        title="Conversation"
-        description="The best conversation platform with AI"
-        icon={MessageSquare}
-        iconColor="text-violet-500"
-        bgColor="bg-violet-500/10"
+        title="Code Generation"
+        description="Generate code base using descriptive text"
+        icon={Code}
+        iconColor="text-green-700"
+        bgColor="bg-green-700/10"
       />
       <div className="px-4 lg:px-8">
         <div>
@@ -137,4 +137,4 @@ const CodePage = () => {
   );
 };
 
-export default CodePage;
+export default ConversationPage;
