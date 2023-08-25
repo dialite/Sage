@@ -19,7 +19,7 @@ export const amountOptions = [
   },
   {
     value: "3",
-    label: "3 Photo",
+    label: "3 Photos",
   },
   {
     value: "4",

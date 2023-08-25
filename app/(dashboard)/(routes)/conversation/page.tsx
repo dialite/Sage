@@ -88,7 +88,7 @@ const ConversationPage = () => {
                       <Input
                         className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                         disabled={isLoading}
-                        placeholder="You can freely ask any question"
+                        placeholder="e.g What is the biggest ocean in the world"
                         {...field}
                       />
                     </FormControl>
