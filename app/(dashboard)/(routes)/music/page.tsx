@@ -25,7 +25,7 @@ import { useState } from "react";
 
 const MusicPage = () => {
   const router = useRouter();
-  const [music, setMusic] = useState<string>([]);
+  const [music, setMusic] = useState<string>();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -104,7 +104,11 @@ const MusicPage = () => {
               <Empty label="No music generated yet!" />
             </div>
           )}
-          <div>Music will be generated here!</div>
+          {music && (
+            <audio controls className="w-full mt-8">
+              <source src={music} />
+            </audio>
+          )}
         </div>
       </div>
     </div>
