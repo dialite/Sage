@@ -1,16 +1,22 @@
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
+// import { Configuration, OpenAIApi } from "openai";
+// const { Configuration, OpenAIApi } = require("openai");
+// import {Configuration, OpenAIApi} from "openai";
+// import OpenAIApi from "openai";
 import OpenAI from "openai";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+// const openai = new OpenAIApi(configuration);
+
 export async function POST(req: Request) {
   try {
     const { userId } = auth();
     const body = await req.json();
-    const { prompt, amount = 1, resolution = "512x512" } = body;
+    const { messages } = body;
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
@@ -20,27 +26,18 @@ export async function POST(req: Request) {
       return new NextResponse("OpenAI API Key not configured", { status: 500 });
     }
 
-    if (!prompt) {
-      return new NextResponse("Prompt is required", { status: 400 });
+    if (!messages) {
+      return new NextResponse("Messages are required", { status: 400 });
     }
 
-    if (!amount) {
-      return new NextResponse("Amount is required", { status: 400 });
-    }
-
-    if (!resolution) {
-      return new NextResponse("Resultion is required", { status: 400 });
-    }
-
-    const response = await openai.images.generate({
-      prompt,
-      n: parseInt(amount, 10),
-      size: resolution,
+    const response = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages,
     });
 
-    return NextResponse.json(response.data);
+    return NextResponse.json(response.choices[0].message);
   } catch (error) {
-    console.log("[IMAGE_ERROR]", error);
+    console.log("[CONVERSATION_ERROR]", error);
     return new NextResponse("Internatl error", { status: 500 });
   }
 }
