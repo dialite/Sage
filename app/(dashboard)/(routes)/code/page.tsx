@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
+import { toast } from "react-hot-toast";
 
 // Define the type for chat messages
 interface ChatCompletionRequestMessage {
@@ -62,6 +63,8 @@ const ConversationPage = () => {
     } catch (error: any) {
       if (error?.response?.status === 403) {
         proModal.onOpen();
+      } else {
+        toast.error("Something went wrong");
       }
     } finally {
       router.refresh();

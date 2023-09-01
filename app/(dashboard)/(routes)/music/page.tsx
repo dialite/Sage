@@ -6,6 +6,8 @@ import { Music } from "../../../../node_modules/lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 // Define the type for chat messages
 interface ChatCompletionRequestMessage {
@@ -22,7 +24,6 @@ import { Loader } from "@/components/loader";
 import { useProModal } from "@/hooks/use-pro-modal";
 
 import { formSchema } from "./constants";
-import { useState } from "react";
 
 const MusicPage = () => {
   const proModal = useProModal();
@@ -50,6 +51,8 @@ const MusicPage = () => {
     } catch (error: any) {
       if (error?.response?.status === 403) {
         proModal.onOpen();
+      } else {
+        toast.error("Something went wrong");
       }
     } finally {
       router.refresh();
