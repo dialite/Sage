@@ -118,7 +118,7 @@ const ConversationPage = () => {
           )}
           {messages.length === 0 && !isLoading && (
             <div>
-              <Empty label="Empty conversation" />
+              <Empty label="No conversation generated yet!" />
             </div>
           )}
           <div className="flex flex-col-reverse gap-y-4">
